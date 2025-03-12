@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách sản phẩm</title>
+</head>
+<body>
+    <h1>Danh sách sản phẩm</h1>
+    <ul id="product-list"></ul>
+
+    <script>
+        fetch('https://your-app.onrender.com/products')
+            .then(response => response.json())
+            .then(data => {
+                let list = document.getElementById('product-list');
+                data.forEach(product => {
+                    let li = document.createElement('li');
+                    li.textContent = `${product.name} - ${product.price} VND`;
+                    list.appendChild(li);
+                });
+            })
+            .catch(error => console.error('Lỗi:', error));
+    </script>
+</body>
+</html>
